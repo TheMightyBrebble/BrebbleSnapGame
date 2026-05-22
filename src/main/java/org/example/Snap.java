@@ -26,6 +26,8 @@ public class Snap extends CardGame{
         String playerTurn;
         String nonTurnPlayer;
         while (true) {
+            //Rather than swapping the turn player between the variables, it checks whether the discard pile is even
+            //or odd and assigns the turn to a p1 if even or p2 if odd
             if(discardedCards.size() % 2 == 0) {
                 playerTurn = p1.playerName;
                 nonTurnPlayer = p2.playerName;
@@ -43,6 +45,8 @@ public class Snap extends CardGame{
                 System.out.println("Last card drawn: " + discardedCards.get(discardedCards.size() - 2));
                 if (dealtCard.getSuit() == discardedCards.get(discardedCards.size() - 2).getSuit()) {
                     int value = checkForSnap();
+                    //once the value has been given, 0 makes turn player win while a 1 makes the alternate
+                    //player win
                     if(value == 0) {
                         System.out.printf("Snap! %s wins!", playerTurn);
                     } else{
@@ -78,6 +82,7 @@ public class Snap extends CardGame{
         System.out.println("It's a pair! Say snap!");
         Scanner scanner = new Scanner(System.in);
         String readString = scanner.nextLine();
+        //checks to see if the user has actually said Snap. If not, the other player wins
             if (readString.equals("snap")) {
                 //turn player has won
                 return 0;
