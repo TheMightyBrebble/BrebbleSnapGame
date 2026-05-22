@@ -12,10 +12,8 @@ public class CardGame {
 
     private void makeDeck() {
         for (Suit suit : Suit.values()) {
-            int value = 2;
             for(Symbol symbol : Symbol.values()) {
-                deckOfCards.add(new Card(suit, symbol, value));
-                value++;
+                deckOfCards.add(new Card(suit, symbol, symbol.numValue));
             }
         }
     }

@@ -5,11 +5,6 @@ public class Card {
     protected Symbol symbol;
     protected int value;
 
-
-    public Card(Suit suit, Symbol symbol) {
-        this.suit = suit;
-        this.symbol = symbol;
-    }
     public Card(Suit suit, Symbol symbol, int value) {
         this.suit = suit;
         this.symbol = symbol;
