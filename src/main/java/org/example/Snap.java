@@ -23,8 +23,8 @@ public class Snap extends CardGame{
     }
 
     public void play2PGame(Player p1, Player p2) {
-        String playerTurn = null;
-        String nonTurnPlayer = null;
+        String playerTurn;
+        String nonTurnPlayer;
         while (true) {
             if(discardedCards.size() % 2 == 0) {
                 playerTurn = p1.playerName;
@@ -42,7 +42,7 @@ public class Snap extends CardGame{
             if (discardedCards.size() > 1) {
                 System.out.println("Last card drawn: " + discardedCards.get(discardedCards.size() - 2));
                 if (dealtCard.getSuit() == discardedCards.get(discardedCards.size() - 2).getSuit()) {
-                    int value = checkforSnap();
+                    int value = checkForSnap();
                     if(value == 0) {
                         System.out.printf("Snap! %s wins!", playerTurn);
                     } else{
@@ -74,7 +74,7 @@ public class Snap extends CardGame{
         }
     }
 
-    public int checkforSnap() {
+    public int checkForSnap() {
         System.out.println("It's a pair! Say snap!");
         Scanner scanner = new Scanner(System.in);
         String readString = scanner.nextLine();
