@@ -8,14 +8,15 @@ public class Snap extends CardGame{
         boolean game = true;
         while (true) {
             //Puts card removed from top of the deck into a variable and then prints it
-            //ISSUE WITH IF STATEMENT, NOT WORKING AS INTENDED DUE TO CARD IMMEDIATELY BEING ADDED TO DISCARDEDCARDS
             Card dealtCard = this.dealCard();
             System.out.println("Dealt card: " + dealtCard);
-                System.out.println("Last card drawn: " + discardedCards.getLast());
-                if (dealtCard.getSuit() == discardedCards.getLast().getSuit()) {
+            if (discardedCards.size() > 1) {
+                System.out.println("Last card drawn: " + discardedCards.get(discardedCards.size() - 2));
+                if (dealtCard.getSuit() == discardedCards.get(discardedCards.size() - 2).getSuit()) {
                     System.out.println("Snap!!!");
                     break;
                 }
+            }
 
             //Code for continuing the game after a card is revealed
             System.out.println("Press Enter Key to Continue.");
