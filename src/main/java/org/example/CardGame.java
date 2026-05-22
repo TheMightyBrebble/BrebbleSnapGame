@@ -35,6 +35,15 @@ public class CardGame {
         return discarded;
     }
 
+    public void sortDeckInNumberOrder() {
+        deckOfCards.sort(new sortDeckInNumberOrder());
+        getDeck();
+    }
+
+    public void sortDeckIntoSuits() {
+        deckOfCards.sort(new sortDeckIntoSuits());
+        getDeck();
+    }
 
 
     public void shuffleDeck() {
