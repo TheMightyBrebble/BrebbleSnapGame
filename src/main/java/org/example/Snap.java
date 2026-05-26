@@ -50,7 +50,7 @@ public class Snap extends CardGame{
                     if(value == 0) {
                         System.out.printf("Snap! %s wins!", playerTurn);
                     } else{
-                        System.out.printf("Snap! %s wins!", nonTurnPlayer);
+                        System.out.printf("Oops, you missed your chance! %s wins!", nonTurnPlayer);
                     }
 
                     break;
@@ -81,16 +81,36 @@ public class Snap extends CardGame{
     public int checkForSnap() {
         System.out.println("It's a pair! Say snap!");
         Scanner scanner = new Scanner(System.in);
+        boolean timerCheck = timeCounter();
         String readString = scanner.nextLine();
         //checks to see if the user has actually said Snap. If not, the other player wins
-            if (readString.equals("snap")) {
-                //turn player has won
-                return 0;
-            }else{
-                //turn player has lost
-                return 1;
+        if (timerCheck) {
+            return 1;
+        }
+        if (readString.equals("snap") || readString.equals("Snap")) {
+            //turn player has won
+            return 0;
+        }else{
+            //turn player has lost
+            return 1;
+        }
+    }
+
+
+    public boolean timeCounter() {
+        int timeCounter = 0;
+        while (true) {
+            System.out.printf("Time Remaining: %d\n", 2-timeCounter);
+            if (timeCounter >= 2) {
+                System.out.println("Time is up. Please press Enter Key to Continue.");
+                return true;
             }
-
-
+            try{
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            timeCounter++;
+        }
     }
 }
