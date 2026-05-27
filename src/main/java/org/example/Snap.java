@@ -80,37 +80,17 @@ public class Snap extends CardGame{
 
     public int checkForSnap() {
         System.out.println("It's a pair! Say snap!");
+        //Gets the current time and stores it into milliseconds
+        long elapsedMilliseconds = System.currentTimeMillis();
         Scanner scanner = new Scanner(System.in);
-        boolean timerCheck = timeCounter();
         String readString = scanner.nextLine();
-        //checks to see if the user has actually said Snap. If not, the other player wins
-        if (timerCheck) {
-            return 1;
-        }
-        if (readString.equals("snap") || readString.equals("Snap")) {
+        //checks to see if the user has actually said Snap within the 2-second limit. If not, the other player wins
+        if (readString.equalsIgnoreCase("snap") && System.currentTimeMillis() < elapsedMilliseconds + 2000) {
             //turn player has won
             return 0;
         }else{
             //turn player has lost
             return 1;
-        }
-    }
-
-
-    public boolean timeCounter() {
-        int timeCounter = 0;
-        while (true) {
-            System.out.printf("Time Remaining: %d\n", 2-timeCounter);
-            if (timeCounter >= 2) {
-                System.out.println("Time is up. Please press Enter Key to Continue.");
-                return true;
-            }
-            try{
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            timeCounter++;
         }
     }
 }
